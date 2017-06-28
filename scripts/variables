@@ -14,3 +14,8 @@ OAUTH_PLUGIN_JAR_NAME='gerrit-oauth-provider.jar'
 OAUTH_PLUGIN_JAR_URL="https://github.com/davido/gerrit-oauth-provider/releases/download/v${OAUTH_PLUGIN_VERSION}/${OAUTH_PLUGIN_JAR_NAME}"
 OAUTH_PLUGIN_LOCAL_PATH="${RESOURCES_PATH}/${OAUTH_PLUGIN_JAR_NAME}"
 
+
+SITE_PATH='../review_site'
+PLUGIN_PATH="${SITE_PATH}/plugins"
+
+SITE_INIT_FLAG="${SITE_PATH}/initialized"
