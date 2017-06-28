@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# sets variables useable somewhere else. should be sourced
+
+RESOURCES_PATH='../resources'
+
+GERRIT_VERSION='2.14.1'
+GERRIT_WAR_NAME="gerrit-${GERRIT_VERSION}.war"
+GERRIT_WAR_URL="https://www.gerritcodereview.com/download/${GERRIT_WAR_NAME}"
+GERRIT_WAR_LOCAL_PATH="${RESOURCES_PATH}/${GERRIT_WAR_NAME}"
+
+OAUTH_PLUGIN_VERSION='2.13.6'
+OAUTH_PLUGIN_JAR_NAME='gerrit-oauth-provider.jar'
+OAUTH_PLUGIN_JAR_URL="https://github.com/davido/gerrit-oauth-provider/releases/download/v${OAUTH_PLUGIN_VERSION}/${OAUTH_PLUGIN_JAR_NAME}"
+OAUTH_PLUGIN_LOCAL_PATH="${RESOURCES_PATH}/${OAUTH_PLUGIN_JAR_NAME}"
+
