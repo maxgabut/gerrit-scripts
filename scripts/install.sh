@@ -11,7 +11,9 @@ set_in_gerrit_config() {
 	git config -f "${SITE_PATH}/etc/gerrit.config" "$@"
 }
 
-
+set_in_secure_config() {
+	git config -f "${SITE_PATH}/etc/secure.config" "$@"
+}
 
 echo 'Initializing review site' :
 if [ -f ${SITE_INIT_FLAG} ]; then
@@ -39,4 +41,10 @@ echo ''
 
 echo 'Setting up configuration' :
 	set_in_gerrit_config gerrit.canonicalWebUrl ${GERRIT_CANONIAL_WEB_URL}
+	# authentication with github
+	set_in_gerrit_config auth.type OAUTH
+	set_in_secure_config auth.gitBasicAuthPolicy HTTP
+	set_in_gerrit_config plugin.gerrit-oauth-provider-github-oauth.client-id ${OAUTH_GITHUB_CLIENT_ID}
+	set_in_secure_config plugin.gerrit-oauth-provider-github-oauth.client-secret ${OAUTH_GITHUB_CLIENT_SECRET}
+
 echo ' Done.'
