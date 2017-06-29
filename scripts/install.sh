@@ -7,6 +7,12 @@ source variables
 
 ./fetch-resources.sh
 
+set_in_gerrit_config() {
+	git config -f "${SITE_PATH}/etc/gerrit.config" "$@"
+}
+
+
+
 echo 'Initializing review site' :
 if [ -f ${SITE_INIT_FLAG} ]; then
 	echo '  site already initialized, moving on.'
@@ -30,3 +36,7 @@ else
 	echo ' Done.'
 fi
 echo ''
+
+echo 'Setting up configuration' :
+	set_in_gerrit_config gerrit.canonicalWebUrl ${GERRIT_CANONIAL_WEB_URL}
+echo ' Done.'

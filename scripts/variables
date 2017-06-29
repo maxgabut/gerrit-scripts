@@ -2,6 +2,10 @@
 
 # sets variables useable somewhere else. should be sourced
 
+# changeable on a install per install basis ==================================
+GERRIT_CANONIAL_WEB_URL='http://localhost:8080/'
+# ============================================================================
+
 RESOURCES_PATH='../resources'
 
 GERRIT_VERSION='2.14.1'
