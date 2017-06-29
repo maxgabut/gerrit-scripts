@@ -4,6 +4,9 @@
 
 # changeable on a install per install basis ==================================
 GERRIT_CANONIAL_WEB_URL='http://localhost:8080/'
+  # we probably don't want to version that, so we just check that it is set
+[ -z ${OAUTH_GITHUB_CLIENT_ID} ] && echo 'please set OAUTH_GITHUB_CLIENT_ID' && exit 1
+[ -z ${OAUTH_GITHUB_CLIENT_SECRET} ] && echo 'please set OAUTH_GITHUB_CLIENT_SECRET' && exit 1
 # ============================================================================
 
 RESOURCES_PATH='../resources'
