@@ -32,6 +32,7 @@ else
 	java -jar ${GERRIT_WAR_LOCAL_PATH} init \
 		--batch \
 		--no-auto-start \
+		--install-plugin download-commands \
 		-d ${SITE_PATH}
 
 	echo ''
