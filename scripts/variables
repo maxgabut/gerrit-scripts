@@ -20,6 +20,14 @@ GERRIT_CANONIAL_WEB_URL='http://localhost:8080/'
 	echo 'please set OAUTH_GITHUB_CLIENT_SECRET' && \
 	echo ${__secret_variable_help_text} && \
 	exit 1
+[ -z ${OAUTH_GOOGLE_CLIENT_ID} ] && \
+	echo 'please set OAUTH_GOOGLE_CLIENT_ID' && \
+	echo ${__secret_variable_help_text} && \
+	exit 1
+[ -z ${OAUTH_GOOGLE_CLIENT_SECRET} ] && \
+	echo 'please set OAUTH_GOOGLE_CLIENT_SECRET' && \
+	echo ${__secret_variable_help_text} && \
+	exit 1
 # ============================================================================
 
 RESOURCES_PATH='../resources'
