@@ -29,4 +29,20 @@ fi
 echo ''
 
 
+echo 'Getting github integration plugin :'
+if [ -d ${GITHUB_PLUGIN_LOCAL_COPY} ]; then
+	echo '  file already there, moving on.'
+else
+	echo '  file absent, getting it...'
+	echo ''
+	git clone ${GITHUB_PLUGIN_REPO_URL} ${GITHUB_PLUGIN_LOCAL_COPY}
+	pushd ${GITHUB_PLUGIN_LOCAL_COPY}
+	  # stable... isn't a stable the place one put horses ?
+		git checkout origin/stable-${GITHUB_PLUGIN_VERSION}
+		mvn clean install
+	popd
+	echo '  Done.'
+fi
+echo ''
+
 

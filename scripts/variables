@@ -44,6 +44,9 @@ OAUTH_PLUGIN_JAR_NAME='gerrit-oauth-provider.jar'
 OAUTH_PLUGIN_JAR_URL="https://github.com/davido/gerrit-oauth-provider/releases/download/v${OAUTH_PLUGIN_VERSION}/${OAUTH_PLUGIN_JAR_NAME}"
 OAUTH_PLUGIN_LOCAL_PATH="${RESOURCES_PATH}/${OAUTH_PLUGIN_JAR_NAME}"
 
+GITHUB_PLUGIN_VERSION='2.14'
+GITHUB_PLUGIN_REPO_URL='https://gerrit.googlesource.com/plugins/github'
+GITHUB_PLUGIN_LOCAL_COPY="${RESOURCES_PATH}/github-plugin"
 
 SITE_PATH='../review_site'
 PLUGIN_PATH="${SITE_PATH}/plugins"
