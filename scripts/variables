@@ -1,7 +1,9 @@
 #! /bin/bash
 
-__secret_variable_path=$(dirname $0)/secret_variables
-[ -f ${__secret_variable_path} ] && source ${__secret_variable_path}
+set -e
+
+__secret_variable_path=secret_variables
+[ -f ${__secret_variable_path} ] && source ./${__secret_variable_path}
 
 __secret_variable_help_text="You may do so by setting an environment
 	variable or by adding an entry in ${__secret_variable_path} (creating
