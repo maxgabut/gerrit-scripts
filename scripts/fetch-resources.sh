@@ -22,23 +22,47 @@ function download_file() {
 	echo ''
 }
 
+function clone_git_repo() {
+	[ $# -eq 0 ] && fail_for_missing_arg || repo_url=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg || commit_ish=${1}; shift;
+	[ $# -eq 0 ] && fail_for_midding_arg || local_copy_path=${1}; shift;
+
+	echo "Cloning ${repo_url} :"
+	if [ -d ${local_copy_path} ]; then
+		echo '  repo already there, moving on.'
+	else
+		echo '  repo absent, fetching it...'
+		echo ''
+		git clone ${repo_url} ${local_copy_path}
+		pushd ${local_copy_path}
+			git checkout ${commit_ish} 
+		popd
+		echo '  Done.'
+	fi
+	echo ''
+}
+
+function build_maven_project() {
+	[ $# -eq 0 ] && fail_for_missing_arg || project_path=${1}; shift;
+
+	echo "Building ${project_path} :"
+	if [ -d ${project_path}/target ]; then
+		echo '  already built, moving on.'
+	else
+		pushd ${project_path}
+			mvn clean install
+		popd
+	fi
+}
+
 download_file ${GERRIT_WAR_URL} ${GERRIT_WAR_LOCAL_PATH}
 download_file ${OAUTH_PLUGIN_JAR_URL} ${OAUTH_PLUGIN_LOCAL_PATH}
 
-echo 'Getting github integration plugin :'
-if [ -d ${GITHUB_PLUGIN_LOCAL_COPY} ]; then
-	echo '  file already there, moving on.'
-else
-	echo '  file absent, getting it...'
-	echo ''
-	git clone ${GITHUB_PLUGIN_REPO_URL} ${GITHUB_PLUGIN_LOCAL_COPY}
-	pushd ${GITHUB_PLUGIN_LOCAL_COPY}
-	  # stable... isn't a stable the place one put horses ?
-		git checkout origin/stable-${GITHUB_PLUGIN_VERSION}
-		mvn clean install
-	popd
-	echo '  Done.'
-fi
-echo ''
+clone_git_repo \
+	${GITHUB_PLUGIN_REPO_URL} \
+	"origin/stable-${GITHUB_PLUGIN_VERSION}" \
+	${GITHUB_PLUGIN_LOCAL_COPY}
 
+build_maven_project ${GITHUB_PLUGIN_OAUTH_PROJECT}
+build_maven_project ${GITHUB_PLUGIN_PLUGIN_PROJECT}
 
