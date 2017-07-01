@@ -1,0 +1,6 @@
+#! /bin/bash
+
+function fail_for_missing_arg() {
+	echo "Mandatory arg missing while calling '${FUNCNAME[1]}'. Aborting." >&2
+	exit 1
+}
