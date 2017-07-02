@@ -1,0 +1,17 @@
+#! /bin/bash
+
+set -e
+cd "$(dirname "$0")"
+
+pushd ../scripts
+	# Following sources result in a lot of warning being suppressed and is not
+	# useable here, so it's disabled.
+	# see: https://github.com/koalaman/shellcheck/issues/913
+	shellcheck -e SC1091 ./*.sh
+popd
+pushd ../hooks
+	shellcheck ./*
+popd
+
+# check own folder
+shellcheck ./*

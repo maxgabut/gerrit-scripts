@@ -1,21 +1,21 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-set -e
-cd $(dirname $0)
+set -eu -o pipefail
+cd "$(dirname "$0")"
 
 source variables
 source checks
 
 function download_file() {
-	[ $# -eq 0 ] && fail_for_missing_arg || source_url=${1}; shift;
-	[ $# -eq 0 ] && fail_for_missing_arg || dest_path=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg || local source_url=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg || local dest_path=${1}; shift;
 
 	echo "Downloading ${source_url}:"
-	if [ -f ${dest_path} ]; then
+	if [ -f "${dest_path}" ]; then
 		echo ' file already there, moving on.'
 	else
 		echo ''
-		wget ${source_url} --output-document ${dest_path}
+		wget "${source_url}" --output-document "${dest_path}"
 		echo '  Done.'
 	fi
 
@@ -55,8 +55,8 @@ function build_maven_project() {
 	fi
 }
 
-download_file ${GERRIT_WAR_URL} ${GERRIT_WAR_LOCAL_PATH}
-download_file ${OAUTH_PLUGIN_JAR_URL} ${OAUTH_PLUGIN_LOCAL_PATH}
+download_file "${GERRIT_WAR_URL}" "${GERRIT_WAR_LOCAL_PATH}"
+download_file "${OAUTH_PLUGIN_JAR_URL}" "${OAUTH_PLUGIN_LOCAL_PATH}"
 
 clone_git_repo \
 	${GITHUB_PLUGIN_REPO_URL} \

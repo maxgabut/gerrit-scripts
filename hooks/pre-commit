@@ -1,0 +1,6 @@
+#! /bin/bash
+
+set -e
+
+# executed relative to project root
+checks/run-shellcheck

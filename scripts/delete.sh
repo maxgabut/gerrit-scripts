@@ -1,10 +1,10 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-set -e
-cd $(dirname $0)
+set -eu -o pipefail
+cd "$(dirname "$0")"
 
 source variables
 
-# to be callable in 'set -e'-ed context, this must return true if there is no
-# error
-[ -d ${SITE_PATH} ] && rm -rf ${SITE_PATH} || true
+if [ -d "${SITE_PATH}" ]; then
+	rm -rf "${SITE_PATH}" 
+fi

@@ -1,9 +1,9 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-set -e
-cd $(dirname $0)
+set -eu -o pipefail
+cd "$(dirname "$0")"
 
 source variables
 
-${SITE_PATH}/bin/gerrit.sh status
+"${SITE_PATH}"/bin/gerrit.sh status
 
