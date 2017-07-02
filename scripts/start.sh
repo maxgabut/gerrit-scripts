@@ -1,9 +1,9 @@
 #! /bin/bash
 
 set -e
-cd $(dirname $0)
+cd "$(dirname "$0")"
 
 source variables
 
-${SITE_PATH}/bin/gerrit.sh start
+"${SITE_PATH}"/bin/gerrit.sh start
 
