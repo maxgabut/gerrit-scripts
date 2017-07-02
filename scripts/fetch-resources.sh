@@ -7,8 +7,8 @@ source variables
 source checks
 
 function download_file() {
-	[ $# -eq 0 ] && fail_for_missing_arg || local source_url=${1}; shift;
-	[ $# -eq 0 ] && fail_for_missing_arg || local dest_path=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg; local source_url=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg; local dest_path=${1};  shift;
 
 	echo "Downloading ${source_url}:"
 	if [ -f "${dest_path}" ]; then
