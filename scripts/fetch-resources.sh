@@ -1,14 +1,14 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-set -e
+set -eu -o pipefail
 cd "$(dirname "$0")"
 
 source variables
 source checks
 
 function download_file() {
-	[ $# -eq 0 ] && fail_for_missing_arg || source_url=${1}; shift;
-	[ $# -eq 0 ] && fail_for_missing_arg || dest_path=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg || local source_url=${1}; shift;
+	[ $# -eq 0 ] && fail_for_missing_arg || local dest_path=${1}; shift;
 
 	echo "Downloading ${source_url}:"
 	if [ -f "${dest_path}" ]; then
