@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -eu -o pipefail
+cd "$(dirname "$0")"
 
 source variables
 ./copy-resources.sh
