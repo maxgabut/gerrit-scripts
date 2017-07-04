@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 source variables
 ./copy-resources.sh
 
-echo 'Initializing review site' :
+echo 'Initializing review site:'
 if [ -f "${SITE_INIT_FLAG}" ]; then
 	echo '  site already initialized, moving on.'
 else
