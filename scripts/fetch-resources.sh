@@ -28,14 +28,14 @@ function clone_git_repo() {
 	[ $# -eq 0 ] && fail_for_midding_arg || local_copy_path=${1}; shift;
 
 	echo "Cloning ${repo_url} :"
-	if [ -d ${local_copy_path} ]; then
+	if [ -d "${local_copy_path}" ]; then
 		echo '  repo already there, moving on.'
 	else
 		echo '  repo absent, fetching it...'
 		echo ''
-		git clone ${repo_url} ${local_copy_path}
-		pushd ${local_copy_path}
-			git checkout ${commit_ish} 
+		git clone "${repo_url}" "${local_copy_path}"
+		pushd "${local_copy_path}"
+			git checkout "${commit_ish}"
 		popd
 		echo '  Done.'
 	fi
@@ -46,10 +46,10 @@ function build_maven_project() {
 	[ $# -eq 0 ] && fail_for_missing_arg || project_path=${1}; shift;
 
 	echo "Building ${project_path} :"
-	if [ -d ${project_path}/target ]; then
+	if [ -d "${project_path}"/target ]; then
 		echo '  already built, moving on.'
 	else
-		pushd ${project_path}
+		pushd "${project_path}"
 			mvn clean install
 		popd
 	fi
@@ -59,10 +59,10 @@ download_file "${GERRIT_WAR_URL}" "${GERRIT_WAR_LOCAL_PATH}"
 download_file "${OAUTH_PLUGIN_JAR_URL}" "${OAUTH_PLUGIN_LOCAL_PATH}"
 
 clone_git_repo \
-	${GITHUB_PLUGIN_REPO_URL} \
+	"${GITHUB_PLUGIN_REPO_URL}" \
 	"origin/stable-${GITHUB_PLUGIN_VERSION}" \
-	${GITHUB_PLUGIN_LOCAL_COPY}
+	"${GITHUB_PLUGIN_LOCAL_COPY}"
 
-build_maven_project ${GITHUB_PLUGIN_OAUTH_PROJECT}
-build_maven_project ${GITHUB_PLUGIN_PLUGIN_PROJECT}
+build_maven_project "${GITHUB_PLUGIN_OAUTH_PROJECT}"
+build_maven_project "${GITHUB_PLUGIN_PLUGIN_PROJECT}"
 
