@@ -44,9 +44,10 @@ function clone_git_repo() {
 
 function build_maven_project() {
 	[ $# -eq 0 ] && fail_for_missing_arg || project_path=${1}; shift;
+	[ $# -eq 0 ] && build_witness_path='target' || build_witness_path=${1}/target;
 
 	echo "Building ${project_path} :"
-	if [ -d "${project_path}"/target ]; then
+	if [ -d "${project_path}/${build_witness_path}" ]; then
 		echo '  already built, moving on.'
 	else
 		pushd "${project_path}"
@@ -63,6 +64,5 @@ clone_git_repo \
 	"origin/stable-${GITHUB_PLUGIN_VERSION}" \
 	"${GITHUB_PLUGIN_LOCAL_COPY}"
 
-build_maven_project "${GITHUB_PLUGIN_OAUTH_PROJECT}"
-build_maven_project "${GITHUB_PLUGIN_PLUGIN_PROJECT}"
+build_maven_project "${GITHUB_PLUGIN_LOCAL_COPY}" "github-oauth"
 
