@@ -15,7 +15,7 @@ else
 
 	java -jar "${GERRIT_WAR_LOCAL_PATH}" init -d "${SITE_PATH}"
 
-	touch "${SITE_INIT_FLAG}"
+	:>"${SITE_INIT_FLAG}"
 
 	echo ''
 	echo ' Done.'

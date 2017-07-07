@@ -19,6 +19,8 @@ else
 		--install-plugin download-commands \
 		-d "${SITE_PATH}"
 
+	:>"${SITE_INIT_FLAG}"
+
 	echo ''
 	echo ' Done.'
 fi
