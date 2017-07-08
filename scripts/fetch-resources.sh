@@ -67,5 +67,8 @@ clone_git_repo \
 build_maven_project "${GITHUB_PLUGIN_LOCAL_COPY}" "github-oauth"
 
 download_file "${NGROK_URL}" "${NGROK_LOCAL_ZIP_PATH}"
-[ ! -f "${NGROK_LOCAL_PATH}" ] && unzip "${NGROK_LOCAL_ZIP_PATH}" -d "${RESOURCES_PATH}"
+if [ ! -f "${NGROK_LOCAL_PATH}" ]; then
+	unzip "${NGROK_LOCAL_ZIP_PATH}" -d "${RESOURCES_PATH}"
+fi
+
 
