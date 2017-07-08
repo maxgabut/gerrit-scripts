@@ -58,3 +58,8 @@ PLUGIN_PATH="${SITE_PATH}/plugins"
 SITE_RESOURCES_COPIED_FLAG="${SITE_PATH}/resources-copied"
 SITE_INIT_FLAG="${SITE_PATH}/initialized"
 
+NGROK_ARCH="linux-amd64"
+NGROK_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-${NGROK_ARCH}.zip"
+NGROK_LOCAL_ZIP_PATH="${RESOURCES_PATH}/ngrok.zip"
+NGROK_LOCAL_PATH="${RESOURCES_PATH}/ngrok"
+

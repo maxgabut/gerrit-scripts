@@ -34,7 +34,7 @@ function clone_git_repo() {
 		echo '  repo absent, fetching it...'
 		echo ''
 		git clone "${repo_url}" "${local_copy_path}"
-		pushd "${local_copy_path}"
+						pushd "${local_copy_path}"
 			git checkout "${commit_ish}"
 		popd
 		echo '  Done.'
@@ -65,4 +65,7 @@ clone_git_repo \
 	"${GITHUB_PLUGIN_LOCAL_COPY}"
 
 build_maven_project "${GITHUB_PLUGIN_LOCAL_COPY}" "github-oauth"
+
+download_file "${NGROK_URL}" "${NGROK_LOCAL_ZIP_PATH}"
+[ ! -f "${NGROK_LOCAL_PATH}" ] && unzip "${NGROK_LOCAL_ZIP_PATH}" -d "${RESOURCES_PATH}"
 
