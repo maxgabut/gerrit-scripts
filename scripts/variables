@@ -54,6 +54,7 @@ GITHUB_PLUGIN_PLUGIN_PROJECT="${GITHUB_PLUGIN_LOCAL_COPY}/github-plugin"
 
 SITE_PATH='../review_site'
 PLUGIN_PATH="${SITE_PATH}/plugins"
+LIB_PATH="${SITE_PATH}/lib"
 
 SITE_RESOURCES_COPIED_FLAG="${SITE_PATH}/resources-copied"
 SITE_INIT_FLAG="${SITE_PATH}/initialized"
