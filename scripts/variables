@@ -47,10 +47,10 @@ OAUTH_PLUGIN_JAR_URL="https://github.com/davido/gerrit-oauth-provider/releases/d
 OAUTH_PLUGIN_LOCAL_PATH="${RESOURCES_PATH}/${OAUTH_PLUGIN_JAR_NAME}"
 
 GITHUB_PLUGIN_VERSION='2.14'
-GITHUB_PLUGIN_REPO_URL='https://gerrit.googlesource.com/plugins/github'
-GITHUB_PLUGIN_LOCAL_COPY="${RESOURCES_PATH}/github-plugin"
-GITHUB_PLUGIN_OAUTH_PROJECT="${GITHUB_PLUGIN_LOCAL_COPY}/github-oauth"
-GITHUB_PLUGIN_PLUGIN_PROJECT="${GITHUB_PLUGIN_LOCAL_COPY}/github-plugin"
+GITHUB_PLUGIN_OAUTH_JAR_URL="https://gerrit-ci.gerritforge.com/view/Plugins-stable-${GITHUB_PLUGIN_VERSION}/job/plugin-github-mvn-stable-${GITHUB_PLUGIN_VERSION}/lastSuccessfulBuild/artifact/github-oauth/target/github-oauth-${GITHUB_PLUGIN_VERSION}-SNAPSHOT.jar"
+GITHUB_PLUGIN_PLUGIN_JAR_URL="https://gerrit-ci.gerritforge.com/view/Plugins-stable-${GITHUB_PLUGIN_VERSION}/job/plugin-github-mvn-stable-${GITHUB_PLUGIN_VERSION}/lastSuccessfulBuild/artifact/github-plugin/target/github-plugin-${GITHUB_PLUGIN_VERSION}-SNAPSHOT.jar"
+GITHUB_PLUGIN_OAUTH_LOCAL_PATH="${RESOURCES_PATH}/github-oauth-${GITHUB_PLUGIN_VERSION}-SNAPSHOT.jar"
+GITHUB_PLUGIN_PLUGIN_LOCAL_PATH="${RESOURCES_PATH}/github-plugin-${GITHUB_PLUGIN_VERSION}-SNAPSHOT.jar"
 
 SITE_PATH='../review_site'
 PLUGIN_PATH="${SITE_PATH}/plugins"

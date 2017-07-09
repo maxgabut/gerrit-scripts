@@ -19,8 +19,8 @@ else
 	mkdir -p "${LIB_PATH}"
 
 	cp "${OAUTH_PLUGIN_LOCAL_PATH}" "${PLUGIN_PATH}"/
-	cp "${GITHUB_PLUGIN_PLUGIN_PROJECT}"/target/github-plugin*.jar "${PLUGIN_PATH}/"
-	cp "${GITHUB_PLUGIN_OAUTH_PROJECT}"/target/github-oauth*.jar "${LIB_PATH}/"
+	cp "${GITHUB_PLUGIN_PLUGIN_LOCAL_PATH}" "${PLUGIN_PATH}/"
+	cp "${GITHUB_PLUGIN_OAUTH_LOCAL_PATH}" "${LIB_PATH}/"
 
 	touch "${SITE_RESOURCES_COPIED_FLAG}"
 
